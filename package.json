@@ -1,0 +1,59 @@
+{
+  "name": "eslint-plugin-reactxp",
+  "version": "0.0.1",
+  "description": "ESlint rules for ReactXP",
+  "keywords": [
+    "eslint",
+    "eslint-plugin",
+    "eslint-plugin-reactxp",
+    "reactxp"
+  ],
+  "author": {
+    "name": "Alexander Tarasyuk",
+    "email": "alexander.tarasyuk@outlook.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/a-tarasyuk/eslint-plugin-reactxp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/a-tarasyuk/eslint-plugin-reactxp/issues"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "prepare": "npm run build",
+    "format": "prettier --write \"./**/*.ts\"",
+    "format:check": "prettier --list-different \"./**/*.ts\"",
+    "test": "jest",
+    "lint": "eslint --config .eslintrc --ext .ts src tests",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/eslint": "6.1.2",
+    "@types/node": "12.11.1",
+    "@typescript-eslint/eslint-plugin": "2.4.0",
+    "@typescript-eslint/parser": "1.13.0",
+    "eslint": "6.1.0",
+    "husky": "3.0.9",
+    "jest": "24.9.0",
+    "prettier": "1.18.2",
+    "ts-jest": "24.1.0",
+    "typescript": "3.6.4"
+  },
+  "dependencies": {
+    "@typescript-eslint/experimental-utils": "2.4.0"
+  },
+  "peerDependencies": {
+    "@typescript-eslint/parser": "^2.4.0",
+    "eslint": "^6.5.1"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run format:check && npm test"
+    }
+  },
+  "license": "MIT"
+}

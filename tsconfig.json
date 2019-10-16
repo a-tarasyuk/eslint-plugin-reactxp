@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "suppressImplicitAnyIndexErrors":  true,
+    "allowSyntheticDefaultImports": false,
+    "experimentalDecorators": true,
+    "noImplicitReturns": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "noImplicitThis": true,
+    // "noUnusedLocals": true,
+    "noImplicitAny": true,
+    "declaration": false,
+    "skipLibCheck": true,
+    "noResolve": false,
+    "strict": true,
+    "module": "commonjs",
+    "target": "es5",
+    "outDir": "dist",
+    "lib": ["es2015", "es2019.array"]
+  },
+
+  "include": [
+    "src"
+  ],
+
+  "exclude": [
+    "dist"
+  ]
+}
