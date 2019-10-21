@@ -93,6 +93,14 @@ const { foo } = styles;
       `,
       options: [{ variableName: 'styles' }],
     },
+    {
+      code: `const test = {}`,
+      options: [
+        {
+          variableName: 'styles',
+        },
+      ],
+    },
   ],
   invalid: [
     {

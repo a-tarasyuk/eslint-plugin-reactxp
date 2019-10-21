@@ -1,5 +1,7 @@
 # eslint-plugin-reactxp
 
+> ReactXP specific linting rules for ESLint
+
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/a-tarasyuk/eslint-plugin-reactxp/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/eslint-plugin-reactxp.svg?style=flat-square)](https://www.npmjs.com/package/eslint-plugin-reactxp) ![Travis (.com) master](https://img.shields.io/travis/com/a-tarasyuk/eslint-plugin-reactxp/master.svg?style=flat-square) [![npm downloads](https://img.shields.io/npm/dm/eslint-plugin-reactxp.svg?style=flat-square)](https://www.npmjs.com/package/eslint-plugin-reactxp)
 
 ## Installation
@@ -26,6 +28,8 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
   "rules": {
+    "reactxp/no-unreferenced-styles": "error",
+    "reactxp/incorrect-this-props": "error"
   }
 }
 ```

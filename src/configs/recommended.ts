@@ -4,5 +4,8 @@ export default {
     sourceType: 'module',
   },
   plugins: ['reactxp'],
-  rules: {},
+  rules: {
+    'reactxp/incorrect-this-props': 'error',
+    'reactxp/no-unreferenced-styles': 'error',
+  },
 };

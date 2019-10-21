@@ -25,6 +25,7 @@
     "format": "prettier --write \"./**/*.ts\"",
     "format:check": "prettier --list-different \"./**/*.ts\"",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "lint": "eslint --config .eslintrc --ext .ts src tests",
     "build": "tsc"
   },
