@@ -6,3 +6,5 @@ tsconfig.json
 tsconfig.eslint.json
 .travis.yml
 coverage
+.prettierignore
+.prettierrc.json

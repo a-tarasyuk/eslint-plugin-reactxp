@@ -47,7 +47,7 @@ export default createRule<Options, MessageIds>({
      * getRefsFromObjectPattern
      *
      * @param node
-     * @returns string[]
+     * @returns {string[]}
      */
     function getRefsFromObjectPattern(node: TSESTree.ObjectPattern): string[] {
       const keys: string[] = [];
@@ -77,7 +77,7 @@ export default createRule<Options, MessageIds>({
      * getRefs
      *
      * @param references
-     * @returns Map
+     * @returns {Map}
      */
     function getRefs(
       references: TSESLint.Scope.Reference[],
@@ -124,7 +124,7 @@ export default createRule<Options, MessageIds>({
      * @param node
      * @param refs
      * @param keys
-     * @returns void
+     * @returns {void}
      */
     function checkProps(
       node: TSESTree.ObjectExpression,
@@ -156,7 +156,7 @@ export default createRule<Options, MessageIds>({
      * checkUnreferencedStyles
      *
      * @param cariable
-     * @returns void
+     * @returns {void}
      */
     function checkUnreferencedStyles({
       references,
@@ -188,12 +188,35 @@ export default createRule<Options, MessageIds>({
       }
     }
 
+    /**
+     * findVariable
+     *
+     * @param scope
+     * @returns {TSESLint.Scope.Variable | undefined}
+     */
+    function findVariable(
+      scope: TSESLint.Scope.Scope,
+    ): TSESLint.Scope.Variable | undefined {
+      const variable = scope.variables.find(
+        variable => variable.name === variableName,
+      );
+      if (variable) {
+        return variable;
+      }
+
+      for (const childScope of scope.childScopes) {
+        const variable = findVariable(childScope);
+        if (variable) {
+          return variable;
+        }
+      }
+
+      return undefined;
+    }
+
     return {
       Program(): void {
-        const scope = context.getScope();
-        const variable = scope.variables.find(
-          variable => variable.name === variableName,
-        );
+        const variable = findVariable(context.getScope());
         if (!variable) {
           return;
         }

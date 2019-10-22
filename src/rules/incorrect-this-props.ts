@@ -30,7 +30,7 @@ export default createRule<Options, MessageIds>({
      * isProps
      * checks if the identifier name is `props`
      * @param node
-     * @returns boolean
+     * @returns {boolean}
      */
     function isProps(node: TSESTree.Node): boolean {
       return node.type === AST_NODE_TYPES.Identifier && node.name === 'props';
@@ -40,7 +40,7 @@ export default createRule<Options, MessageIds>({
      * hasParamProps
      * checks if a method contains argument with the name `props`
      * @param node
-     * @returns boolean
+     * @returns {boolean}
      */
     function hasParamProps(node: TSESTree.MethodDefinition): boolean {
       return (
@@ -52,7 +52,7 @@ export default createRule<Options, MessageIds>({
     /**
      * enterMethod
      * @param node
-     * @returns void
+     * @returns {void}
      */
     function enterMethod(node: TSESTree.MethodDefinition): void {
       stack.push(hasParamProps(node));
@@ -61,7 +61,7 @@ export default createRule<Options, MessageIds>({
     /**
      * exitFunction
      * @param node
-     * @returns void
+     * @returns {void}
      */
     function exitFunction(): void {
       stack.pop();
@@ -70,7 +70,7 @@ export default createRule<Options, MessageIds>({
     /**
      * checkThisProps
      * @param node
-     * @returns void
+     * @returns {void}
      */
     function checkThisProps(node: TSESTree.ThisExpression): void {
       if (!stack[stack.length - 1]) {

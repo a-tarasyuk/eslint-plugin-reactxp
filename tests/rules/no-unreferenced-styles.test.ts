@@ -198,5 +198,35 @@ class Foo extends RX.Component {
         },
       ],
     },
+    {
+      code: `
+import * as React from 'react';
+import * as RX from 'reactxp';
+
+const _styles = {
+  foo: RX.Styles.createViewStyle({}),
+  baz: RX.Styles.createViewStyle({})
+}
+
+export class Foo extends RX.Component {
+  render() {
+    return (
+      <FooComponent style={_styles.foo}></FooComponent>
+    )
+  }
+}
+      `,
+      parserOptions: {
+        sourceType: 'module',
+      },
+      errors: [
+        {
+          messageId: 'unreferencedStyle',
+          endColumn: 37,
+          column: 3,
+          line: 7,
+        },
+      ],
+    },
   ],
 });
