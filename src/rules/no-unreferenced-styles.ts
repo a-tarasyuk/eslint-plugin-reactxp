@@ -123,13 +123,15 @@ export default createRule<Options, MessageIds>({
      *
      * @param node
      * @param refs
+     * @param parentName
      * @param keys
      * @returns {void}
      */
     function checkProps(
       node: TSESTree.ObjectExpression,
       refs: Map<string, string>,
-      keys: string[] = [],
+      parentName: string,
+      keys = [parentName],
     ): void {
       for (const property of node.properties) {
         if (
@@ -137,7 +139,10 @@ export default createRule<Options, MessageIds>({
           property.key.type === AST_NODE_TYPES.Identifier
         ) {
           if (property.value.type === AST_NODE_TYPES.ObjectExpression) {
-            checkProps(property.value, refs, [...keys, property.key.name]);
+            checkProps(property.value, refs, parentName, [
+              ...keys,
+              property.key.name,
+            ]);
           } else {
             keys.push(property.key.name);
           }
@@ -149,6 +154,8 @@ export default createRule<Options, MessageIds>({
             context.report({ node: property, messageId: 'unreferencedStyle' });
           }
         }
+
+        keys = [parentName];
       }
     }
 
@@ -184,7 +191,7 @@ export default createRule<Options, MessageIds>({
         node.init &&
         node.init.type === AST_NODE_TYPES.ObjectExpression
       ) {
-        checkProps(node.init, getRefs(references), [node.id.name]);
+        checkProps(node.init, getRefs(references), node.id.name);
       }
     }
 

@@ -205,7 +205,8 @@ import * as RX from 'reactxp';
 
 const _styles = {
   foo: RX.Styles.createViewStyle({}),
-  baz: RX.Styles.createViewStyle({})
+  bar: RX.Styles.createViewStyle({}),
+  baz: RX.Styles.createViewStyle({}),
 }
 
 export class Foo extends RX.Component {
@@ -225,6 +226,12 @@ export class Foo extends RX.Component {
           endColumn: 37,
           column: 3,
           line: 7,
+        },
+        {
+          messageId: 'unreferencedStyle',
+          endColumn: 37,
+          column: 3,
+          line: 8,
         },
       ],
     },
