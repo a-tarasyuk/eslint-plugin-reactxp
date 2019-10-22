@@ -143,26 +143,23 @@ export default createRule<Options, MessageIds>({
               ...keys,
               property.key.name,
             ]);
-          } else {
-            keys.push(property.key.name);
           }
 
           if (
             property.value.type === AST_NODE_TYPES.CallExpression &&
-            !refs.has(keys.join('.'))
+            !refs.has([...keys, property.key.name].join('.'))
           ) {
             context.report({ node: property, messageId: 'unreferencedStyle' });
           }
         }
-
-        keys = [parentName];
       }
     }
 
     /**
      * checkUnreferencedStyles
      *
-     * @param cariable
+     * @param references
+     * @param defs
      * @returns {void}
      */
     function checkUnreferencedStyles({

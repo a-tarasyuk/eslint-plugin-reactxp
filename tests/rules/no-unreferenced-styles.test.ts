@@ -101,6 +101,33 @@ const { foo } = styles;
         },
       ],
     },
+    {
+      code: `
+import * as React from 'react';
+import * as RX from 'reactxp';
+
+const _styles = {
+  a: RX.Styles.createViewStyle({}),
+  b: RX.Styles.createViewStyle({}),
+  c: RX.Styles.createViewStyle({}),
+  d: {
+    d1: RX.Styles.createViewStyle({})
+  }
+}
+
+export class Foo extends RX.Component {
+  render() {
+    const { a, b, c } = _styles;
+    return (
+      <FooComponent style={[ a, b, c, _styles.d.d1 ]}></FooComponent>
+    )
+  }
+}
+      `,
+      parserOptions: {
+        sourceType: 'module',
+      },
+    },
   ],
   invalid: [
     {
