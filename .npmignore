@@ -5,3 +5,4 @@ jest.config.js
 tsconfig.json
 tsconfig.eslint.json
 .travis.yml
+coverage
