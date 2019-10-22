@@ -189,7 +189,7 @@ export default createRule<Options, MessageIds>({
     }
 
     return {
-      Program() {
+      Program(): void {
         const scope = context.getScope();
         const variable = scope.variables.find(
           variable => variable.name === variableName,

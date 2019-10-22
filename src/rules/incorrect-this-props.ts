@@ -26,10 +26,22 @@ export default createRule<Options, MessageIds>({
   create: function(context) {
     const stack: boolean[] = [];
 
+    /**
+     * isProps
+     * checks if the identifier name is `props`
+     * @param node
+     * @returns boolean
+     */
     function isProps(node: TSESTree.Node): boolean {
       return node.type === AST_NODE_TYPES.Identifier && node.name === 'props';
     }
 
+    /**
+     * hasParamProps
+     * checks if a method contains argument with the name `props`
+     * @param node
+     * @returns boolean
+     */
     function hasParamProps(node: TSESTree.MethodDefinition): boolean {
       return (
         node.value.type === AST_NODE_TYPES.FunctionExpression &&
@@ -37,15 +49,34 @@ export default createRule<Options, MessageIds>({
       );
     }
 
-    function enterMethod(node: TSESTree.MethodDefinition) {
+    /**
+     * enterMethod
+     * @param node
+     * @returns void
+     */
+    function enterMethod(node: TSESTree.MethodDefinition): void {
       stack.push(hasParamProps(node));
     }
 
-    function exitFunction() {
+    /**
+     * exitFunction
+     * @param node
+     * @returns void
+     */
+    function exitFunction(): void {
       stack.pop();
     }
 
+    /**
+     * checkThisProps
+     * @param node
+     * @returns void
+     */
     function checkThisProps(node: TSESTree.ThisExpression): void {
+      if (!stack[stack.length - 1]) {
+        return;
+      }
+
       const parent = node.parent;
       if (!parent) {
         return;
@@ -73,13 +104,7 @@ export default createRule<Options, MessageIds>({
     return {
       MethodDefinition: enterMethod,
       'MethodDefinition:exit': exitFunction,
-      ThisExpression(node) {
-        if (!stack[stack.length - 1]) {
-          return;
-        }
-
-        checkThisProps(node);
-      },
+      ThisExpression: checkThisProps,
     };
   },
 });
