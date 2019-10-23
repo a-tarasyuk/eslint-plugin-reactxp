@@ -17,9 +17,7 @@ Add `reactxp` to the plugins section of your `.eslintrc` configuration file. You
 ```json
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "reactxp"
-  ]
+  "plugins": ["reactxp"]
 }
 ```
 
@@ -41,6 +39,13 @@ Then configure the rules you want to use under the rules section.
   "extends": "plugin:reactxp/recommended"
 }
 ```
+
+## Rules
+
+| Name                                                               | Description                                                    |
+| ------------------------------------------------------------------ | -------------------------------------------------------------- |
+| [`no-unreferenced-styles`](./docs/rules/no-unreferenced-styles.md) | Disallow unused styles                                         |
+| [`incorrect-this-props`](./docs/rules/incorrect-this-props.md)     | Disallow use `this.props` in methods with the `props` argument |
 
 ## License and Copyright
 

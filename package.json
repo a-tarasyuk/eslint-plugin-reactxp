@@ -22,8 +22,8 @@
   "main": "dist/index.js",
   "scripts": {
     "prepare": "npm run build",
-    "format": "prettier --write \"./**/*.ts\"",
-    "format:check": "prettier --list-different \"./**/*.ts\"",
+    "format": "prettier --write \"./**/*.{ts,md}\"",
+    "format:check": "prettier --list-different \"./**/*.{ts,md}\"",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "lint": "eslint --config .eslintrc --ext .ts src tests",
