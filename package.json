@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-reactxp",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "ESlint rules for ReactXP",
   "keywords": [
     "eslint",
@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@types/eslint": "6.1.2",
-    "@types/node": "12.11.2",
+    "@types/node": "12.11.5",
     "@typescript-eslint/eslint-plugin": "2.5.0",
     "@typescript-eslint/parser": "1.13.0",
     "eslint": "6.1.0",
