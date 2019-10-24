@@ -13,7 +13,7 @@ ruleTester.run('incorrect-this-props', rule, {
     {
       code: `
 class Foo extends Component {
-  bar(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     const prevProps = this.props;
   }
 }
@@ -22,7 +22,7 @@ class Foo extends Component {
     {
       code: `
 class Foo extends Component {
-  bar(props) {
+  componentWillReceiveProps(props) {
     if (props.foo) {}
     const { foo } = props;
   }
@@ -32,9 +32,49 @@ class Foo extends Component {
     {
       code: `
 class Foo extends Component {
-  bar() {
+  UNSAFE_componentWillUpdate() {
     if (this.props.foo) {}
     const { foo } = this.props;
+  }
+}
+      `,
+    },
+    {
+      code: `
+class Foo extends Component {
+  componentWillUpdate() {
+    if (this.props.foo) {}
+    const { foo } = this.props;
+  }
+}
+      `,
+    },
+    {
+      code: `
+class Foo extends Component {
+  getSnapshotBeforeUpdate(props) {
+    if (props.foo) {}
+    const { foo } = props;
+  }
+}
+      `,
+    },
+    {
+      code: `
+class Foo extends Component {
+  shouldComponentUpdate(props) {
+    if (props.foo) {}
+    const { foo } = props;
+  }
+}
+      `,
+    },
+    {
+      code: `
+class Foo extends Component {
+  componentDidUpdate(props) {
+    if (props.foo) {}
+    const { foo } = props;
   }
 }
       `,
@@ -44,7 +84,7 @@ class Foo extends Component {
     {
       code: `
 class Foo extends Component {
-  bar(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     const { id } = this.props;
   }
 }
@@ -61,7 +101,75 @@ class Foo extends Component {
     {
       code: `
 class Foo extends Component {
-  bar(props) {
+  componentWillReceiveProps(props) {
+    const { id } = this.props;
+  }
+}
+      `,
+      errors: [
+        {
+          messageId: 'incorrectThisPropsError',
+          line: 4,
+          column: 20,
+          endColumn: 30,
+        },
+      ],
+    },
+    {
+      code: `
+class Foo extends Component {
+  UNSAFE_componentWillUpdate(props) {
+    const { id } = this.props;
+  }
+}
+      `,
+      errors: [
+        {
+          messageId: 'incorrectThisPropsError',
+          line: 4,
+          column: 20,
+          endColumn: 30,
+        },
+      ],
+    },
+    {
+      code: `
+class Foo extends Component {
+  componentWillUpdate(props) {
+    const { id } = this.props;
+  }
+}
+      `,
+      errors: [
+        {
+          messageId: 'incorrectThisPropsError',
+          line: 4,
+          column: 20,
+          endColumn: 30,
+        },
+      ],
+    },
+    {
+      code: `
+class Foo extends Component {
+  componentDidUpdate(props) {
+    const { id } = this.props;
+  }
+}
+      `,
+      errors: [
+        {
+          messageId: 'incorrectThisPropsError',
+          line: 4,
+          column: 20,
+          endColumn: 30,
+        },
+      ],
+    },
+    {
+      code: `
+class Foo extends Component {
+  shouldComponentUpdate(props) {
     const id = this.props.id;
   }
 }
@@ -78,7 +186,7 @@ class Foo extends Component {
     {
       code: `
 class Foo extends Component {
-  bar(props) {
+  getSnapshotBeforeUpdate(props) {
     const foo = this.props.foo;
     const { bar } = this.props;
   }

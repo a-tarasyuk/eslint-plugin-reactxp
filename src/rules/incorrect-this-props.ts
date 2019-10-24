@@ -7,6 +7,18 @@ import { createRule } from '../utils';
 type MessageIds = 'incorrectThisPropsError';
 type Options = [];
 
+const LIFECYCLE_METHODS = [
+  'UNSAFE_componentWillReceiveProps',
+  'componentWillReceiveProps',
+
+  'UNSAFE_componentWillUpdate',
+  'componentWillUpdate',
+
+  'getSnapshotBeforeUpdate',
+  'shouldComponentUpdate',
+  'componentDidUpdate',
+];
+
 export default createRule<Options, MessageIds>({
   name: 'incorrect-this-props',
   meta: {
@@ -55,7 +67,11 @@ export default createRule<Options, MessageIds>({
      * @returns {void}
      */
     function enterMethod(node: TSESTree.MethodDefinition): void {
-      stack.push(hasParamProps(node));
+      stack.push(
+        node.key.type === AST_NODE_TYPES.Identifier &&
+          LIFECYCLE_METHODS.includes(node.key.name) &&
+          hasParamProps(node),
+      );
     }
 
     /**
