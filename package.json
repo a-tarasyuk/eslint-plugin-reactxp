@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-reactxp",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "ESlint rules for ReactXP",
   "keywords": [
     "eslint",
