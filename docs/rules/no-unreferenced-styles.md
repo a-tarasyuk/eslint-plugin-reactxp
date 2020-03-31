@@ -6,8 +6,8 @@ Examples of **incorrect** code for this rule
 
 ```ts
 let /* Error: Styles array is not marked const */ _styles = {
-  foo: RX.Styles.createViewStyle({}),
-};
+    foo: RX.Styles.createViewStyle({}),
+  };
 
 const foo = _styles.foo;
 ```
@@ -15,7 +15,7 @@ const foo = _styles.foo;
 ```tsx
 const _styles = {
   foo: RX.Styles.createViewStyle({}),
-  bar: RX.Styles.createViewStyle({}),  // Error: Unreferenced style
+  bar: RX.Styles.createViewStyle({}), // Error: Unreferenced style
 };
 
 class Foo extends RX.Component {

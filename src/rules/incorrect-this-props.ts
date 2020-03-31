@@ -35,7 +35,7 @@ export default createRule<Options, MessageIds>({
   },
   defaultOptions: [],
 
-  create: function(context) {
+  create: function (context) {
     const stack: boolean[] = [];
 
     /**

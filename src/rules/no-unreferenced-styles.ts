@@ -42,7 +42,7 @@ export default createRule<Options, MessageIds>({
     },
   ],
 
-  create: function(context, [{ variableName }]) {
+  create: function (context, [{ variableName }]) {
     /**
      * getRefsFromObjectPattern
      *
@@ -98,7 +98,7 @@ export default createRule<Options, MessageIds>({
           } else if (current.type === AST_NODE_TYPES.VariableDeclarator) {
             current = current.id;
           } else if (current.type === AST_NODE_TYPES.ObjectPattern) {
-            keys = getRefsFromObjectPattern(current).map(ref =>
+            keys = getRefsFromObjectPattern(current).map((ref) =>
               [...keys, ref].join('.'),
             );
             current = undefined;
@@ -202,7 +202,7 @@ export default createRule<Options, MessageIds>({
       scope: TSESLint.Scope.Scope,
     ): TSESLint.Scope.Variable | undefined {
       const variable = scope.variables.find(
-        variable => variable.name === variableName,
+        (variable) => variable.name === variableName,
       );
       if (variable) {
         return variable;
