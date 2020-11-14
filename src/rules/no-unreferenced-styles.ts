@@ -167,7 +167,7 @@ export default createRule<Options, MessageIds>({
       defs,
     }: TSESLint.Scope.Variable): void {
       const [def] = defs;
-      const node = def.node as TSESTree.Node;
+      const node = def.node;
 
       if (node.type !== AST_NODE_TYPES.VariableDeclarator) {
         return;
