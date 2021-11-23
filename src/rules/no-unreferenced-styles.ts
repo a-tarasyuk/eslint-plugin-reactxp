@@ -17,7 +17,6 @@ export default createRule<Options, MessageIds>({
   meta: {
     docs: {
       description: `disallow unused styles`,
-      category: 'Best Practices',
       recommended: 'error',
     },
     messages: {

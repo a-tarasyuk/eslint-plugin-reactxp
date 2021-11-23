@@ -24,7 +24,6 @@ export default createRule<Options, MessageIds>({
   meta: {
     docs: {
       description: `Disallow use "this.props" in methods with the "props" argument`,
-      category: 'Best Practices',
       recommended: 'error',
     },
     messages: {
