@@ -1,8 +1,4 @@
-import {
-  AST_NODE_TYPES,
-  TSESTree,
-  TSESLint,
-} from '@typescript-eslint/experimental-utils';
+import { AST_NODE_TYPES, TSESTree, TSESLint } from '@typescript-eslint/utils';
 import { createRule } from '../utils';
 
 interface Config {
