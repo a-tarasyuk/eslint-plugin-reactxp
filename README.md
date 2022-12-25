@@ -2,7 +2,7 @@
 
 > [ReactXP](https://github.com/microsoft/reactxp) specific linting rules for ESLint
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/a-tarasyuk/eslint-plugin-reactxp/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/eslint-plugin-reactxp.svg?style=flat-square)](https://www.npmjs.com/package/eslint-plugin-reactxp) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/a-tarasyuk/eslint-plugin-reactxp/main?style=flat-square) ![Coveralls github](https://img.shields.io/coveralls/github/a-tarasyuk/eslint-plugin-reactxp?style=flat-square) [![npm downloads](https://img.shields.io/npm/dm/eslint-plugin-reactxp.svg?style=flat-square)](https://www.npmjs.com/package/eslint-plugin-reactxp)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/a-tarasyuk/eslint-plugin-reactxp/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/eslint-plugin-reactxp.svg?style=flat-square)](https://www.npmjs.com/package/eslint-plugin-reactxp) ![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/a-tarasyuk/eslint-plugin-reactxp/main.yml?style=flat-square) ![Coveralls github](https://img.shields.io/coveralls/github/a-tarasyuk/eslint-plugin-reactxp?style=flat-square) [![npm downloads](https://img.shields.io/npm/dm/eslint-plugin-reactxp.svg?style=flat-square)](https://www.npmjs.com/package/eslint-plugin-reactxp)
 
 ## Installation
 
